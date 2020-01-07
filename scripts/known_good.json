@@ -29,31 +29,6 @@
       ]
     },
     {
-      "name" : "Vulkan-Tools",
-      "url" : "https://github.com/KhronosGroup/Vulkan-Tools.git",
-      "sub_dir" : "Vulkan-Tools",
-      "build_dir" : "Vulkan-Tools/build",
-      "install_dir" : "Vulkan-Tools/build/install",
-      "commit" : "0c2618b2c31e2f216e131ff4c1c83e2c92c6ae66",
-      "deps" : [
-        {
-          "var_name" : "VULKAN_HEADERS_INSTALL_DIR",
-          "repo_name" : "Vulkan-Headers"
-        },
-        {
-          "var_name" : "VULKAN_LOADER_INSTALL_DIR",
-          "repo_name" : "Vulkan-Loader"
-        }
-      ],
-      "cmake_options" : [
-        "-DBUILD_CUBE=OFF"
-      ],
-      "build_platforms" : [
-        "windows",
-        "linux"
-      ]
-    },
-    {
       "name" : "Vulkan-ValidationLayers",
       "url" : "https://github.com/KhronosGroup/Vulkan-ValidationLayers.git",
       "sub_dir" : "Vulkan-ValidationLayers",

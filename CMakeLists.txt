@@ -149,13 +149,8 @@ find_package(Vulkan)
 if (CMAKE_SYSTEM_NAME STREQUAL "Windows" OR
     CMAKE_SYSTEM_NAME STREQUAL "Linux")
 
-    option(BUILD_TESTS "Build tests" ON)
-    option(BUILD_LAYERSVT "Build layersvt" ON)
-    option(BUILD_VLF "Build layer_factory" ON)
+    option(BUILD_TESTS "Build tests" OFF)
     option(BUILD_VKTRACE "Build VkTrace" ON)
-    option(BUILD_VIA "Build via" ON)
-
-    option(BUILD_LAYERMGR "Build layer manager" ON)
 
     if (CMAKE_SYSTEM_NAME STREQUAL "Linux" AND NOT (BUILD_WSI_XCB_SUPPORT OR BUILD_WSI_WAYLAND_SUPPORT))
         option(BUILD_VKTRACE_REPLAY "Build VkReplay" OFF)
@@ -168,14 +163,8 @@ elseif (CMAKE_SYSTEM_NAME STREQUAL "Darwin")
     option(BUILD_VKTRACE ON)
     option(BUILD_LOADER OFF)
     option(BUILD_TESTS OFF)
-    option(BUILD_LAYERS OFF)
-    option(BUILD_LAYERSVT "Build layersvt" ON)
-    option(BUILD_VLF OFF)
     option(BUILD_VKTRACEVIEWER OFF)
-    option(BUILD_DEMOS OFF)
     option(BUILD_VKJSON OFF)
-    option(BUILD_VIA "Build VIA" ON)
-    option(BUILD_LAYERMGR "Build layer manager" ON)
     option(BUILD_VKTRACE_LAYER OFF)
     option(BUILD_VKTRACE_REPLAY OFF)
 
@@ -218,25 +207,10 @@ if(BUILD_TESTS)
     add_subdirectory(tests)
 endif()
 
-if(BUILD_VLF)
-    add_subdirectory(layer_factory)
-endif()
-
 if(BUILD_VKTRACE)
     add_subdirectory(vktrace)
 endif()
 
-if(BUILD_VIA)
-    add_subdirectory(via)
-endif()
-
-if(BUILD_LAYERSVT)
-    add_subdirectory(layersvt)
-endif()
-
-if(BUILD_LAYERMGR)
-    add_subdirectory(vkconfig)
-endif()
 
 # uninstall target
 configure_file(
