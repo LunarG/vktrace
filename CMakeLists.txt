@@ -81,7 +81,7 @@ set (PYTHON_CMD ${PYTHON_EXECUTABLE})
 
 # Enable cmake folders
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
-set(VULKANTOOLS_TARGET_FOLDER vt_cmake_targets)
+set(VKTRACE_TARGET_FOLDER vt_cmake_targets)
 
 option(USE_CCACHE "Use ccache" OFF)
 if (USE_CCACHE)
@@ -126,7 +126,7 @@ set (VULKAN_SDK $ENV{VULKAN_SDK})
 # NOTE: jsoncpp is located in SUBPROJECTS_DIR.
 set (SUBPROJECTS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/submodules)
 
-set(VULKANTOOLS_SCRIPTS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/scripts)
+set(VKTRACE_SCRIPTS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/scripts)
 
 # Header file for CMake settings
 find_package(VulkanHeaders)
@@ -149,7 +149,7 @@ find_package(Vulkan)
 if (CMAKE_SYSTEM_NAME STREQUAL "Windows" OR
     CMAKE_SYSTEM_NAME STREQUAL "Linux")
 
-    option(BUILD_TESTS "Build tests" OFF)
+    option(BUILD_TESTS "Build tests" ON)
     option(BUILD_VKTRACE "Build VkTrace" ON)
 
     if (CMAKE_SYSTEM_NAME STREQUAL "Linux" AND NOT (BUILD_WSI_XCB_SUPPORT OR BUILD_WSI_WAYLAND_SUPPORT))
@@ -196,10 +196,10 @@ if (WIN32)
 endif()
 
 # Define macro used for building vkxml generated files
-macro(run_vulkantools_vk_xml_generate dependency output)
+macro(run_vktrace_vk_xml_generate dependency output)
     add_custom_command(OUTPUT ${output}
-    COMMAND ${PYTHON_CMD} -B ${VULKANTOOLS_SCRIPTS_DIR}/vt_genvk.py -registry ${VulkanRegistry_DIR}/vk.xml -scripts ${VulkanRegistry_DIR} ${output}
-    DEPENDS ${VulkanRegistry_DIR}/vk.xml ${VulkanRegistry_DIR}/generator.py ${VULKANTOOLS_SCRIPTS_DIR}/${dependency} ${VULKANTOOLS_SCRIPTS_DIR}/vt_genvk.py ${VulkanRegistry_DIR}/reg.py
+    COMMAND ${PYTHON_CMD} -B ${VKTRACE_SCRIPTS_DIR}/vt_genvk.py -registry ${VulkanRegistry_DIR}/vk.xml -scripts ${VulkanRegistry_DIR} ${output}
+    DEPENDS ${VulkanRegistry_DIR}/vk.xml ${VulkanRegistry_DIR}/generator.py ${VKTRACE_SCRIPTS_DIR}/${dependency} ${VKTRACE_SCRIPTS_DIR}/vt_genvk.py ${VulkanRegistry_DIR}/reg.py
     )
 endmacro()
 

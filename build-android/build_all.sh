@@ -101,7 +101,7 @@ popd
 # TODO
 
 #
-# build downstream VulkanTools components
+# build downstream vktrace components
 #
 ./build_vktracereplay.sh
 

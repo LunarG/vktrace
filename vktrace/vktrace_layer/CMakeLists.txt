@@ -22,9 +22,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/../)
 set(TARGET_NAME VkLayer_vktrace_layer)
 
 if (WIN32)
-    # Put VkLayer_vktrace_layer.dll in the same directory as vktrace.exe
-    # so that vktrace.exe can find VkLayer_vktrace_layer.dll.
-    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/../../layersvt/)
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/../../vktrace/)
 endif()
 
 set(SRC_LIST
@@ -98,12 +96,12 @@ set(CONFIG_DEFINES
 )
 if(WIN32)
     set(CONFIG_DEFINES ${CONFIG_DEFINES}
-        -DOUTPUT_FILE="${CMAKE_CURRENT_BINARY_DIR}/../../layersvt/$<CONFIGURATION>/${TARGET_NAME}.json"
+        -DOUTPUT_FILE="${CMAKE_CURRENT_BINARY_DIR}/../../vktrace/$<CONFIGURATION>/${TARGET_NAME}.json"
         -DRELATIVE_LAYER_BINARY=".\\\\$<TARGET_FILE_NAME:${TARGET_NAME}>"
     )
 else()
     set(CONFIG_DEFINES ${CONFIG_DEFINES}
-        -DOUTPUT_FILE="${CMAKE_CURRENT_BINARY_DIR}/../../layersvt/${TARGET_NAME}.json"
+        -DOUTPUT_FILE="${CMAKE_CURRENT_BINARY_DIR}/../../vktrace/${TARGET_NAME}.json"
         -DRELATIVE_LAYER_BINARY="../vktrace/$<TARGET_FILE_NAME:${TARGET_NAME}>"
     )
 endif()
@@ -112,7 +110,7 @@ add_custom_target(${TARGET_NAME}-json ALL COMMAND ${CMAKE_COMMAND} ${CONFIG_DEFI
 if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     add_custom_target(${TARGET_NAME}-staging-json ALL
             COMMAND mkdir -p ${CMAKE_CURRENT_BINARY_DIR}/staging-json
-            COMMAND cp ${CMAKE_CURRENT_BINARY_DIR}/../../layersvt/${TARGET_NAME}.json ${CMAKE_CURRENT_BINARY_DIR}/staging-json
+            COMMAND cp ${CMAKE_CURRENT_BINARY_DIR}/../../vktrace/${TARGET_NAME}.json ${CMAKE_CURRENT_BINARY_DIR}/staging-json
             COMMAND sed -i -e "/.library_path.:/s=../vktrace/libVkLayer=libVkLayer=" ${CMAKE_CURRENT_BINARY_DIR}/staging-json/${TARGET_NAME}.json
             VERBATIM
             DEPENDS ${TARGET_NAME}-json
