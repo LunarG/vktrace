@@ -175,9 +175,9 @@ if __name__ == '__main__':
         sspath = os.getenv('SCREENSHOT_LAYER_PATH')
         if sspath is None or sspath == '':
             if sys.platform.startswith("win"):
-                sspath='../../../VulkanTools/build/layersvt/Debug'
+                sspath='..\..\../VulkanTools/build/layersvt/Debug'
             else:
-                sspath='..\..\../VulkanTools/build/layersvt'
+                sspath='../../../VulkanTools/build/layersvt'
 
         if sys.platform.startswith("win"):
             shutil.copyfile(sspath + '\VkLayer_screenshot.dll', args.VkTraceLayerPath + '\VkLayer_screenshot.dll')
