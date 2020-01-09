@@ -1,12 +1,12 @@
 # Vulkan Ecosystem Components
 
-This project provides vktrace capture/replay tool, the Layer Factory, and other layer tools and driver tests.
+This project provides vktrace capture/replay tool and vktrace tests.
 
 ## CI Build Status
 | Platform | Build Status |
 |:--------:|:------------:|
-| Linux/Android | [![Build Status](https://travis-ci.org/LunarG/VulkanTools.svg?branch=master)](https://travis-ci.org/LunarG/VulkanTools) |
-| Windows | [![Build status](https://ci.appveyor.com/api/projects/status/2ncmy766ufb2hnh2/branch/master?svg=true)](https://ci.appveyor.com/project/karl-lunarg/vulkantools/branch/master) |
+| Linux/Android | [![Build Status](https://travis-ci.org/LunarG/vktrace.svg?branch=master)](https://travis-ci.org/LunarG/vktrace) |
+| Windows | [![Build status](https://ci.appveyor.com/api/projects/status/2ncmy766ufb2hnh2/branch/master?svg=true)](https://ci.appveyor.com/project/karl-lunarg/vktrace/branch/master) |
 
 ## Introduction
 
@@ -15,8 +15,6 @@ https://github.com/KhronosGroup/Vulkan-ValidationLayers
 These pieces are required to enable this repository to be built standalone; that is without having to clone the Vulkan-ValidationLayers repository.
 
 The following components are available in this repository over and above what is mirrored from Vulkan-ValidationLayers repository
-- Api_dump, screenshot, device_simulation, and example layers (layersvt/)
-- Starter_layer and demo_layer (layer_factory/)
 - tests for the vktrace and vkreplay (tests/)
 - vktrace and vkreplay, API capture and replay  (vktrace/)
 
@@ -29,14 +27,11 @@ Please see the [CONTRIBUTING](CONTRIBUTING.md) file in this repository for more 
 ## How to Build and Run
 
 [BUILD.md](BUILD.md)
-includes directions for building all the components, running the tests and running the demo applications.
-
-Information on how to enable the various layers is in
-[layersvt/README.md](layersvt/README.md).
+includes directions for building all the components and running the tests.
 
 ## Version Tagging Scheme
 
-Updates to the `LunarG-VulkanTools` repository which correspond to a new Vulkan specification release are tagged using the following format: `v<`_`version`_`>` (e.g., `v1.1.96`).
+Updates to the `LunarG-vktrace` repository which correspond to a new Vulkan specification release are tagged using the following format: `v<`_`version`_`>` (e.g., `v1.1.96`).
 
 **Note**: Marked version releases have undergone thorough testing but do not imply the same quality level as SDK tags. SDK tags follow the `sdk-<`_`version`_`>.<`_`patch`_`>` format (e.g., `sdk-1.1.92.0`).
 

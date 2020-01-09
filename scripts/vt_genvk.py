@@ -586,7 +586,7 @@ if __name__ == '__main__':
     from generator import *
     from cgenerator import CGeneratorOptions, COutputGenerator
 
-    # VulkanTools generator additions
+    # vktrace generator additions
     from tool_helper_file_generator import ToolHelperFileOutputGenerator, ToolHelperFileOutputGeneratorOptions
     from api_dump_generator import ApiDumpGeneratorOptions, ApiDumpOutputGenerator, COMMON_CODEGEN, TEXT_CODEGEN, HTML_CODEGEN, JSON_CODEGEN
     from vktrace_file_generator import VkTraceFileOutputGenerator, VkTraceFileOutputGeneratorOptions

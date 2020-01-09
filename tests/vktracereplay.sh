@@ -1,6 +1,7 @@
-# Note: For this script to run successfully, cube must be in PATH.
-
 #!/bin/bash
+# Note: For this script to run successfully:
+#    cube must be in PATH.
+#    SCREEENSHOT_LAYER_PATH should be set to directory containing the screenshot layer
 #set -x
 if [ -t 1 ] ; then
     RED='\033[0;31m'
@@ -14,7 +15,7 @@ fi
 
 printf "$GREEN[ RUN      ]$NC $0\n"
 
-python3 vktracereplay.py "" ${PWD}/../vktrace/vktrace ${PWD}/../layersvt ${PWD}/../vktrace/vkreplay
+python3 vktracereplay.py ${PWD}/../vktrace/vktrace ${PWD}/../vktrace ${PWD}/../vktrace/vkreplay
 
 if [ $? -eq 0 ] ; then
 	printf "$GREEN[  PASSED  ]$NC ${PGM}\n"

@@ -6,7 +6,7 @@ supplementing the loader and validation layer core components found at https://g
 
 ## Get Additional Components
 
-The public repository for the the LunarG VulkanTools is hosted at https://github.com/LunarG.
+The public repository for LunarG vktrace is hosted at https://github.com/LunarG.
 
 If you intend to contribute, the preferred work flow is to fork the repo,
 create a branch in your forked repo, do the work,
@@ -58,15 +58,15 @@ sudo dnf install qt qt5-qtwebengine-devel
 
 ## Download the repository
 
-To create your local git repository of VulkanTools:
+To create your local git repository of vktrace:
 ```
 cd YOUR_DEV_DIRECTORY
 
-# Clone the VulkanTools repo
-git clone --recurse-submodules git@github.com:LunarG/VulkanTools.git
+# Clone the vktrace repo
+git clone --recurse-submodules git@github.com:LunarG/vktrace.git
 
 # Enter the folder containing the cloned source
-cd VulkanTools
+cd vktrace
 
 # This will perform some initialization and ensure subcomponents are built:
 ./update_external_sources.sh    # linux
@@ -75,7 +75,7 @@ cd VulkanTools
 
 ## Updating the Repository After a Pull
 
-The VulkanTools repository contains a submodule named jsoncpp. You may occasionally have to update the source in that submodules.
+The vktrace repository contains a submodule named jsoncpp. You may occasionally have to update the source in that submodules.
 You will know this needs to be performed when you perform a pull, and you check the status of your tree with `git status` and something similar to the following shows:
 
 ```
@@ -191,8 +191,8 @@ as a quick-start tool for common use cases and default configurations.
 
 For all platforms, start with:
 
-    git clone --recurse-submodules git@github.com:LunarG/VulkanTools.git
-    cd VulkanTools
+    git clone --recurse-submodules git@github.com:LunarG/vktrace.git
+    cd vktrace
     mkdir build
 
 For 64-bit Linux and MacOS, continue with:
@@ -277,11 +277,11 @@ VkConfig on linux requires Qt version 5.5 and on Windows requires Qt version 5.6
 
 ## Linux Build
 
-This build process builds all items in the VulkanTools repository
+This build process builds all items in the vktrace repository
 
 Example debug build:
 ```
-cd VulkanTools  # cd to the root of the VulkanTools git repository
+cd vktrace  # cd to the root of the vktrace git repository
 cmake -H. -Bdbuild -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=build/install -DVULKAN_HEADERS_INSTALL_DIR=absolute_path_to_install_directory -DVULKAN_LOADER_INSTALL_DIR=absolute_path_to_install_directory -DVULKAN_VALIDATIONLAYERS_INSTALL_DIR=absolute_path_to_install_directory
 cd dbuild
 make -j8
@@ -316,7 +316,7 @@ Visual Studio is used to build the software, and will re-run CMake as appropriat
 
 To build all Windows targets (e.g. in a "Developer Command Prompt for VS2015" window):
 ```
-cd VulkanTools  # cd to the root of the VulkanTools git repository
+cd vktrace  # cd to the root of the vktrace git repository
 cmake -H. -Bdbuild -DCMAKE_BUILD_TYPE=Debug -G "Visual Studio 14 2015 Win64" -DCMAKE_INSTALL_PREFIX=build/install -DVULKAN_HEADERS_INSTALL_DIR=absolute_path_to_install_directory -DVULKAN_LOADER_INSTALL_DIR=absolute_path_to_install_directory -DVULKAN_VALIDATIONLAYERS_INSTALL_DIR=absolute_path_to_install_directory
 cmake --build dbuild --config Debug --target install
 ```
@@ -338,7 +338,7 @@ and 64-bit Windows since both versions of EXEs and DLLs exist simultaneously on 
 
 To do this, simply create and build the release versions of each target:
 ```
-cd VulkanTools  # cd to the root of the Vulkan git repository
+cd vktrace  # cd to the root of the Vulkan git repository
 mkdir build
 cd build
 cmake -G "Visual Studio 14 Win64" ..
@@ -421,7 +421,7 @@ ndk-build
 ## Android usage
 This documentation is preliminary and needs to be beefed up.
 
-See the [vktracereplay.sh](https://github.com/LunarG/VulkanTools/blob/master/build-android/vktracereplay.sh) file for a working example of how to use vktrace/vkreplay and screenshot layers.
+See the [vktracereplay.sh](https://github.com/LunarG/vktrace/blob/master/build-android/vktracereplay.sh) file for a working example of how to use vktrace/vkreplay and screenshot layers.
 
 Two additional scripts have been added to facilitate tracing and replaying any APK.  Note that these two scripts do not install anything for you, so make sure your target APK, vktrace, vktrace_layer, and vkreplay all use the same ABI.
 ```
@@ -456,4 +456,4 @@ To use, simply push it to the device and run it.  The resulting json file will b
 ```
 /sdcard/Android/<output>.json
 ```
-A working example can be found in [devsim_layer_test_anroid.sh](https://github.com/LunarG/VulkanTools/blob/master/build-android/devsim_layer_test_android.sh)
+A working example can be found in [devsim_layer_test_anroid.sh](https://github.com/LunarG/vktrace/blob/master/build-android/devsim_layer_test_android.sh)
