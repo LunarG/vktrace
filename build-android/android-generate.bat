@@ -15,13 +15,13 @@ REM # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 REM # See the License for the specific language governing permissions and
 REM # limitations under the License.
 
-echo Removing old generated directory in VT\build-android
+echo Removing old generated directory in build-android
 echo ********
 if exist generated (
     RMDIR /S /Q generated
 )
 
-echo Creating new empty generated directories in VT\build-android
+echo Creating new empty generated directories in build-android
 echo ********
 MKDIR generated
 MKDIR generated\include
@@ -40,7 +40,7 @@ echo ********
 pushd generated\include
 
 REM apidump
-echo Generating VT apidump header/source files
+echo Generating apidump header/source files
 echo ********
 py -3 %VT_SCRIPTS%\vt_genvk.py -registry %REGISTRY% -scripts %REGISTRY_PATH% api_dump.cpp
 py -3 %VT_SCRIPTS%\vt_genvk.py -registry %REGISTRY% -scripts %REGISTRY_PATH% api_dump_text.h
@@ -48,7 +48,7 @@ py -3 %VT_SCRIPTS%\vt_genvk.py -registry %REGISTRY% -scripts %REGISTRY_PATH% api
 py -3 %VT_SCRIPTS%\vt_genvk.py -registry %REGISTRY% -scripts %REGISTRY_PATH% api_dump_json.h
  
 REM vktrace
-echo Generating VT vktrace header/source files
+echo Generating vktrace header/source files
 echo ********
 py -3 %VT_SCRIPTS%\vt_genvk.py -registry %REGISTRY% -scripts %REGISTRY_PATH% vktrace_vk_vk.h
 py -3 %VT_SCRIPTS%\vt_genvk.py -registry %REGISTRY% -scripts %REGISTRY_PATH% vktrace_vk_vk.cpp
@@ -58,7 +58,7 @@ py -3 %VT_SCRIPTS%\vt_genvk.py -registry %REGISTRY% -scripts %REGISTRY_PATH% vk_
 py -3 %VT_SCRIPTS%\vt_genvk.py -registry %REGISTRY% -scripts %REGISTRY_PATH% vk_struct_size_helper.c
 
 REM vkreplay
-echo Generating VT vkreplay header/source files
+echo Generating vkreplay header/source files
 echo ********
 py -3 %VT_SCRIPTS%\vt_genvk.py -registry %REGISTRY% -scripts %REGISTRY_PATH% vkreplay_vk_func_ptrs.h
 py -3 %VT_SCRIPTS%\vt_genvk.py -registry %REGISTRY% -scripts %REGISTRY_PATH% vkreplay_vk_replay_gen.cpp
@@ -79,13 +79,5 @@ MKDIR generated\include
 MKDIR generated\common
 
 echo Leaving third_party\Vulkan-ValidationLayers\build-android
-echo ********
-popd
-
-echo Copying generated headers/source into third_party\Vulkan-ValidationLayers\build-android
-echo ********
-COPY /Y * %LVL_BASE%\build-android\generated\include
-
-echo leaving Generated/Include Folder
 echo ********
 popd

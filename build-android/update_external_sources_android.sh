@@ -177,7 +177,7 @@ function update_vulkan-validationlayers () {
    cd $BASEDIR/Vulkan-ValidationLayers
    if [[ $(git config --get remote.origin.url) != $VULKAN_VALIDATIONLAYERS_URL ]]; then
       echo "Vulkan-ValidationLayers URL mismatch, recreating local repo"
-      create_vulkan-tools
+      create_vulkan-validationlayers
       return
    fi
    git fetch --all
