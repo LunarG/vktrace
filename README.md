@@ -1,28 +1,10 @@
-# Vulkan Ecosystem Components
+# vktrace
 
-This project provides vktrace capture/replay tool and vktrace tests.
+This project provides the vktrace capture/replay tool and vktrace tests. Note that vktrace has been deprecated and replaced with gfxreconstruct (git@github.com:LunarG/gfxreconstruct.git). This source is provided as a reference. If you desire to make changes to code in this repo, please fork this repo and make changes in your own copy. No contributions are being acceped for this project.
 
-## CI Build Status
-| Platform | Build Status |
-|:--------:|:------------:|
-| Linux/Android | [![Build Status](https://travis-ci.org/LunarG/vktrace.svg?branch=master)](https://travis-ci.org/LunarG/vktrace) |
-| Windows | [![Build status](https://ci.appveyor.com/api/projects/status/2ncmy766ufb2hnh2/branch/master?svg=true)](https://ci.appveyor.com/project/karl-lunarg/vktrace/branch/master) |
+## CI Testing
 
-## Introduction
-
-Branches within this repository include the Vulkan loader, validation layers, header files, and associated tests.  These pieces are mirrored from this Github repository:
-https://github.com/KhronosGroup/Vulkan-ValidationLayers
-These pieces are required to enable this repository to be built standalone; that is without having to clone the Vulkan-ValidationLayers repository.
-
-The following components are available in this repository over and above what is mirrored from Vulkan-ValidationLayers repository
-- tests for the vktrace and vkreplay (tests/)
-- vktrace and vkreplay, API capture and replay  (vktrace/)
-
-## Contributing
-
-If you intend to contribute, the preferred work flow is for you to develop your contribution
-in a fork of this repo in your GitHub account and then submit a pull request.
-Please see the [CONTRIBUTING](CONTRIBUTING.md) file in this repository for more details
+Since this project is deprecated, no Continuous Intergration tests are run agains the source in this project. There do exists several tests in the test directory that you can run to test basic functionalty after you have made a source change.
 
 ## How to Build and Run
 
@@ -33,17 +15,13 @@ includes directions for building all the components and running the tests.
 
 Updates to the `LunarG-vktrace` repository which correspond to a new Vulkan specification release are tagged using the following format: `v<`_`version`_`>` (e.g., `v1.1.96`).
 
-**Note**: Marked version releases have undergone thorough testing but do not imply the same quality level as SDK tags. SDK tags follow the `sdk-<`_`version`_`>.<`_`patch`_`>` format (e.g., `sdk-1.1.92.0`).
-
-This scheme was adopted following the 1.1.96 Vulkan specification release.
-
 ## License
 This work is released as open source under a Apache-style license from Khronos including a Khronos copyright.
 
 See COPYRIGHT.txt for a full list of licenses used in this repository.
 
 ## Acknowledgements
-While this project has been developed primarily by LunarG, Inc., there are many other
-companies and individuals making this possible: Valve Corporation, funding
+While this project was developed primarily by LunarG, Inc., there are many other
+companies and individuals that made this possible: Valve Corporation, funding
 project development; Google providing significant contributions to the validation layers;
 Khronos providing oversight and hosting of the project.

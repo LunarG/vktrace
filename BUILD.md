@@ -1,16 +1,12 @@
 # Build Instructions
 This document contains the instructions for building this repository on Linux and Windows.
 
-This repository contains Vulkan development tools, such as additional layers and VkTrace trace/replay utilities,
+This repository contains the Vulkan vktrace/replay development tools,
 supplementing the loader and validation layer core components found at https://github.com/KhronosGroup.
 
 ## Get Additional Components
 
 The public repository for LunarG vktrace is hosted at https://github.com/LunarG.
-
-If you intend to contribute, the preferred work flow is to fork the repo,
-create a branch in your forked repo, do the work,
-and create a pull request on GitHub to integrate that work back into the repo.
 
 ## Linux System Requirements
 These additional packages are needed for building the components in this repo.
@@ -30,14 +26,6 @@ sudo apt-get install wget autotools-dev libxcb-keysyms1 libxcb-keysyms1-dev libx
 sudo apt-get install libc6-dev-i386 g++-multilib
 ```
 
-On Ubuntu 18.04 LTS or newer, you may build VkConfig only if you also install several
-additional Qt dependencies:
-
-```
-# Qt Dependencies for building VkConfig (not required if you don't want VkConfig)
-sudo apt-get install qt5-default qtwebengine5-dev
-```
-
 ### Fedora Core
 
 Fedora Core 28 and 29 were tested with this repo.
@@ -52,8 +40,6 @@ sudo dnf install git @development-tools glm-devel \
                  libpng-devel wayland-devel libpciaccess-devel \
                  libX11-devel libXpresent libxcb xcb-util libxcb-devel libXrandr-devel \
                  xcb-util-keysyms-devel xcb-util-wm-devel
-# Qt Dependencies for building VkConfig (not required if you don't want VkConfig)
-sudo dnf install qt qt5-qtwebengine-devel
 ```
 
 ## Download the repository
@@ -159,19 +145,6 @@ must build the
 with its install target. Take note of its install directory location and pass
 it on the CMake command line for building this repository, as described below.
 
-### Vulkan-Tools
-
-The tests in this repository depend on the Vulkan-Tools repository, which is
-hosted under Khronos' GitHub account and differentiated in name by a hyphen.
-The tests use Vulkan Info and the mock ICD from Vulkan-Tools.
-
-You may build the
-[Vulkan-Tools repository](https://github.com/KhronosGroup/Vulkan-Tools.git)
-with its install target. Take note of its build directory location and set
-the VULKAN\_TOOLS\_BUILD\_DIR environment variable to the appropriate path.
-
-If you do not intend to run the tests, you do not need Vulkan-Tools.
-
 ### Build and Install Directories
 
 A common convention is to place the build directory in the top directory of
@@ -230,7 +203,7 @@ specific requirements for configuring and building these components.
   the current directory when it is invoked. In this case, they are built in
   the `build` directory.
 - The `build` directory is also being used to build this
-  (Vulkan-Tools) repository. But there shouldn't be any conflicts
+  (VulkanTools) repository. But there shouldn't be any conflicts
   inside the `build` directory between the dependent repositories and the
   build files for this repository.
 - The `--dir` option for `update_deps.py` can be used to relocate the
@@ -250,30 +223,6 @@ specific requirements for configuring and building these components.
 - Please use `update_deps.py --help` to list additional options and read the
   internal documentation in `update_deps.py` for further information.
 
-
-## VkConfig
-
-VkConfig has additional requirements beyond the rest of the source in this
-repository.
-Because of that, if one or more of those dependencies is not properly installed,
-you may get a warning during CMake generation like the following:
-
-```
-WARNING: vkconfig will be excluded because Qt5 was not found.
--- Configuring done
--- Generating done
-```
-
-This is usually caused by missing Qt dependencies.
-Make sure the following items are installed for proper building of VkConfig:
-
-* Qt5
-* Qt5 Web Engine Widgets
-
-Please note that not building VkConfig is purely fine as well and will not
-impact the generation of any other targets.
-
-VkConfig on linux requires Qt version 5.5 and on Windows requires Qt version 5.6.
 
 ## Linux Build
 
@@ -419,9 +368,8 @@ ndk-build
 ```
 
 ## Android usage
-This documentation is preliminary and needs to be beefed up.
 
-See the [vktracereplay.sh](https://github.com/LunarG/vktrace/blob/master/build-android/vktracereplay.sh) file for a working example of how to use vktrace/vkreplay and screenshot layers.
+See the [vktracereplay.sh](https://github.com/LunarG/vktrace/blob/master/build-android/vktracereplay.sh) file for a working example of how to use vktrace/vkreplay and the screenshot layers.
 
 Two additional scripts have been added to facilitate tracing and replaying any APK.  Note that these two scripts do not install anything for you, so make sure your target APK, vktrace, vktrace_layer, and vkreplay all use the same ABI.
 ```
@@ -449,11 +397,3 @@ vktracereplay.bat ^
  --package com.example.CubeWithLayers ^
  --frame 50
 ```
-### vkjson_info
-Currently vkjson_info is only available as an executable for devices with root access.
-
-To use, simply push it to the device and run it.  The resulting json file will be found in:
-```
-/sdcard/Android/<output>.json
-```
-A working example can be found in [devsim_layer_test_anroid.sh](https://github.com/LunarG/vktrace/blob/master/build-android/devsim_layer_test_android.sh)
